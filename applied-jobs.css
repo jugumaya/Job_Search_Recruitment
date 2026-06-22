@@ -1,0 +1,489 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    position: relative;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.2), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(74, 86, 226, 0.2), transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Header */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #333;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+nav a:hover::before {
+    width: 60%;
+}
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+main h1 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: -1px;
+    animation: fadeInUp 0.8s ease;
+}
+
+main>p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Applied Jobs List */
+.applied-jobs-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.job-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.job-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.job-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.job-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.job-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.job-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.job-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.job-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.job-card h3 {
+    color: #667eea;
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.job-card p {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.job-card p:last-of-type {
+    margin-bottom: 15px;
+}
+
+/* Status Badges */
+.status {
+    display: inline-block;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.waiting {
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+}
+
+.accepted {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(56, 239, 125, 0.4);
+    animation: none;
+}
+
+.rejected {
+    background: linear-gradient(135deg, #ff4757 0%, #dc3545 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    animation: none;
+}
+
+/* Withdraw Button */
+.withdraw-btn {
+    background: linear-gradient(135deg, #ff4757 0%, #dc3545 100%);
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.withdraw-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+}
+
+.withdraw-btn:active {
+    transform: translateY(-1px);
+}
+
+.withdraw-btn:disabled {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+/* No Jobs Message */
+.applied-jobs-list>p {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: white;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #555;
+    margin-top: 60px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+footer p {
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+/* Filter/Sort Section (Optional) */
+.filter-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #667eea;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 24px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    main {
+        padding: 30px 15px;
+    }
+
+    main h1 {
+        font-size: 36px;
+    }
+
+    main>p {
+        font-size: 16px;
+    }
+
+    .applied-jobs-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .job-card {
+        padding: 25px;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 12px 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    main h1 {
+        font-size: 28px;
+    }
+
+    main>p {
+        font-size: 15px;
+    }
+
+    .job-card {
+        padding: 20px;
+    }
+
+    .job-card h3 {
+        font-size: 20px;
+    }
+
+    .status {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .withdraw-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 25px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Loading State */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
